@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WebService.DAL.Models
 {
-    public class User
+    public class UserDAL
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Details Details { get; set; }
+        public DetailsDAL Details { get; set; }
     }
 }

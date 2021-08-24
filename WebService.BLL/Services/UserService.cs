@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebService.BLL.Interfaces;
+using WebService.BLL.Mapping;
+using WebService.BLL.ModelsBLL;
+using WebService.DAL.Interfaces;
 
 namespace WebService.BLL.Services
 {
@@ -13,9 +17,10 @@ namespace WebService.BLL.Services
         {
             _repository = repository;
         }
-        public void AddUser(UserBLL user)
+
+        public void Create(UserBLL user)
         {
-            _repository.Add(user.MapToDALUser());
+            _repository.Create(user.MapToDALUser());
         }
 
         public void Delete(UserBLL user)
@@ -23,9 +28,19 @@ namespace WebService.BLL.Services
             _repository.Delete(user.MapToDALUser());
         }
 
-        public IEnumerable<UserBLL> GetUsers()
+        public UserBLL Get(int id)
         {
-            return _repository.Get().MapToEnumerableUserBLL();
+            return _repository.Get(id).MapToBLLUser();
+        }
+
+        public IEnumerable<UserBLL> GetAll()
+        {
+            return _repository.GetAll().MapToEnumerableBLLUsers();
+        }
+
+        public void Update(UserBLL user)
+        {
+            _repository.Update(user.MapToDALUser());
         }
     }
 }

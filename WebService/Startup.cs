@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebService.BLL.Interfaces;
+using WebService.BLL.Services;
+using WebService.DAL.EFCore;
+using WebService.DAL.Interfaces;
+using WebService.DAL.Repository;
 
 namespace WebService
 {
@@ -28,6 +34,10 @@ namespace WebService
         {
 
             services.AddControllers();
+            services.AddDbContext<UserContext>(options =>
+    options.UseSqlServer(Configuration["Data:UserDataBase:ConnectionStrings"]));
+            services.AddTransient<IRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebService", Version = "v1" });
@@ -54,6 +64,8 @@ namespace WebService
             {
                 endpoints.MapControllers();
             });
+
+            //SeedData.SeedDatabase(context);
         }
     }
 }

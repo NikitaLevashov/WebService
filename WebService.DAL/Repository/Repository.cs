@@ -17,27 +17,27 @@ namespace WebService.DAL.Repository
         {
             _context = context;
         }
-        public IEnumerable<User> GetAll()
+        public IEnumerable<UserDAL> GetAll()
         {
             return _context.Users.AsNoTracking().Include(x => x.Details);
         }
-        public User Get(int id)
+        public UserDAL Get(int id)
         {
             return _context.Users.Find(id);
         }
-        public void Create(User user)
+        public void Create(UserDAL user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();
         }
 
-        public void Delete(User user)
+        public void Delete(UserDAL user)
         {
             _context.Users.Remove(user);
             _context.SaveChanges();
         }
 
-        public void Update(User user)
+        public void Update(UserDAL user)
         {
             _context.Users.Update(user);
             _context.SaveChanges();

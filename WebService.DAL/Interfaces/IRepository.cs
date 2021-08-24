@@ -9,10 +9,10 @@ namespace WebService.DAL.Interfaces
 {
     public interface IRepository
     {
-        IEnumerable<User> GetAll();
-        User Get(int id);
-        void Create(User item);
-        void Update(User item);
-        void Delete(User id);
+        IEnumerable<UserDAL> GetAll();
+        UserDAL Get(int id);
+        void Create(UserDAL item);
+        void Update(UserDAL item);
+        void Delete(UserDAL id);
     }
 }
