@@ -9,6 +9,5 @@ namespace WebService.Models
     {
         public int Age { get; set; }
         public string Adress { get; set; }
-        public User User { get; set; }
     }
 }

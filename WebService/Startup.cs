@@ -36,8 +36,8 @@ namespace WebService
             services.AddControllers();
             services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(Configuration["Data:UserDataBase:ConnectionStrings"]));
-            services.AddTransient<IRepository, UserRepository>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddScoped<IRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebService", Version = "v1" });

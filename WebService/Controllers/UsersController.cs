@@ -21,17 +21,17 @@ namespace WebService.Controllers
         }        
         
         [HttpGet]
-        public async Task<ActionResult> GetUsers()
+        public IActionResult Get()
         {
-            var products = await Task.Run(() => _service.GetAll().MapToEnumerableUsers());
+            var products =  _service.GetAll().MapToEnumerableUsers();
 
             return Ok(products);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetUser(int id)
+        public IActionResult Get(int id)
         {
-            User user = await Task.Run(()=>_service.Get(id).MapToUser());
+            User user = _service.GetById(id).MapToUser();
 
             if (user == null)
             {
@@ -45,16 +45,52 @@ namespace WebService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateUser(User user)
+        public IActionResult Post(User user)
         {
             if (ModelState.IsValid)
             {
-                await Task.Run(() => _service.Create(user.MapToBLLUser()));
+                _service.Create(user.MapToBLLUser());
 
                 return Ok(user);
             }
 
             return BadRequest(ModelState);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var user = _service.GetAll().FirstOrDefault(x=> x.Id == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _service.Delete(user);
+
+            return Ok(user);
+        }
+
+        [HttpPut]
+        public IActionResult Put(int id, User user)
+        {
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            if (!_service.GetAll().Any(x => x.Id == id))
+            {
+                return NotFound();
+            }
+
+            var newUser = user.MapToBLLUser();
+            newUser.Id = id;
+
+            _service.Update(newUser);
+
+            return Ok(user);
         }
     }
 }

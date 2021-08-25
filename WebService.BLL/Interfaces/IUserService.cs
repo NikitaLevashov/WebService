@@ -10,7 +10,7 @@ namespace WebService.BLL.Interfaces
     public interface IUserService
     {
         IEnumerable<UserBLL> GetAll();
-        UserBLL Get(int id);
+        UserBLL GetById(int id);
         void Create(UserBLL item);
         void Update(UserBLL item);
         void Delete(UserBLL id);

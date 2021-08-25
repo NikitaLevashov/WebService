@@ -28,7 +28,7 @@ namespace WebService.BLL.Services
             _repository.Delete(user.MapToDALUser());
         }
 
-        public UserBLL Get(int id)
+        public UserBLL GetById(int id)
         {
             return _repository.Get(id).MapToBLLUser();
         }
