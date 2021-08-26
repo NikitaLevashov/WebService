@@ -11,32 +11,13 @@ namespace WebService.Mapping
     public static class MapperProfileUser
     {
         public static UserBLL MapToBLLUser(this User user)
-        {
-            var userBLL = MapperForBLL().Map<User, UserBLL>(user);
-
-            return userBLL;
-        }
-
-        public static User MapToUser(this UserBLL userBLL)
-        {
-            var user = MapperForApi().Map<UserBLL, User>(userBLL);
-
-            return user;
-        }
-
-        public static IEnumerable<User> MapToEnumerableUsers(this IEnumerable<UserBLL> usersBLL)
-        {
-            var users = MapperForApi().Map<IEnumerable<UserBLL>, IEnumerable<User>>(usersBLL);
-
-            return users;
-        }
-
+            => MapperForBLL().Map<User, UserBLL>(user);
+        public static User MapToUser(this UserBLL userBLL) 
+            => MapperForApi().Map<UserBLL, User>(userBLL);
+        public static IEnumerable<User> MapToEnumerableUsers(this IEnumerable<UserBLL> usersBLL) 
+            => MapperForApi().Map<IEnumerable<UserBLL>, IEnumerable<User>>(usersBLL);
         public static IEnumerable<UserBLL> MapToEnumerableBLLUsers(this IEnumerable<User> users)
-        {
-            var usersBLL = MapperForBLL().Map<IEnumerable<User>, IEnumerable<UserBLL>>(users);
-
-            return usersBLL;
-        }
+            => MapperForBLL().Map<IEnumerable<User>, IEnumerable<UserBLL>>(users);
 
         private static Mapper MapperForApi()
         {

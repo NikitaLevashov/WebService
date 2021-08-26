@@ -17,30 +17,10 @@ namespace WebService.BLL.Services
         {
             _repository = repository;
         }
-
-        public void Create(UserBLL user)
-        {
-            _repository.Create(user.MapToDALUser());
-        }
-
-        public void Delete(UserBLL user)
-        {
-            _repository.Delete(user.MapToDALUser());
-        }
-
-        public UserBLL GetById(int id)
-        {
-            return _repository.GetById(id).MapToBLLUser();
-        }
-
-        public IEnumerable<UserBLL> GetAll()
-        {
-            return _repository.GetAll().MapToEnumerableBLLUsers();
-        }
-
-        public void Update(UserBLL user)
-        {
-            _repository.Update(user.MapToDALUser());
-        }
+        public void Create(UserBLL user) => _repository.Create(user.MapToDALUser());
+        public void Delete(UserBLL user) => _repository.Delete(user.MapToDALUser()); 
+        public UserBLL GetById(int id) => _repository.GetById(id).MapToBLLUser();
+        public IEnumerable<UserBLL> GetAll() => _repository.GetAll().MapToEnumerableBLLUsers();
+        public void Update(UserBLL user) => _repository.Update(user.MapToDALUser());
     }
 }

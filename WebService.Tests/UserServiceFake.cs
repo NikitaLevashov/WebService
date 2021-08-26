@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebService.BLL.Interfaces;
 using WebService.Mapping;
 using WebService.BLL.ModelsBLL;
@@ -31,21 +29,9 @@ namespace WebService.Tests
             };
         }
 
-        public IEnumerable<UserBLL> GetAll()
-        {
-            return usersBLL;
-        }
-
-        public UserBLL GetById(int id)
-        {
-            return usersBLL.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Create(UserBLL item)
-        {
-            users.Add(item.MapToUser());
-        }
-
+        public IEnumerable<UserBLL> GetAll() => usersBLL;  
+        public UserBLL GetById(int id) => usersBLL.FirstOrDefault(x => x.Id == id);       
+        public void Create(UserBLL item) => users.Add(item.MapToUser());    
         public void Update(UserBLL item)
         {
             var user = users.MapToEnumerableBLLUsers().FirstOrDefault(x => x.Id == item.Id);

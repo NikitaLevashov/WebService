@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using WebService.DAL.Models;
 
 namespace WebService.DAL.EFCore
@@ -11,7 +9,6 @@ namespace WebService.DAL.EFCore
         public DbSet<DetailsDAL> Details { get; set; }
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
-            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
     }

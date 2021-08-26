@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebService.DAL.EFCore;
 using WebService.DAL.Interfaces;
 using WebService.DAL.Models;
@@ -17,14 +13,9 @@ namespace WebService.DAL.Repository
         {
             _context = context;
         }
-        public IEnumerable<UserDAL> GetAll()
-        {
-            return _context.Users.AsNoTracking().Include(x => x.Details);
-        }
-        public UserDAL GetById(int id)
-        {
-            return _context.Users.Find(id);
-        }
+        public IEnumerable<UserDAL> GetAll() 
+            => _context.Users.AsNoTracking().Include(x => x.Details);
+        public UserDAL GetById(int id) => _context.Users.Find(id);
         public void Create(UserDAL user)
         {
             _context.Users.Add(user);

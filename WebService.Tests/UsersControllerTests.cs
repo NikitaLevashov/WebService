@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebService.BLL.Interfaces;
@@ -20,7 +19,6 @@ namespace WebService.Tests
         {
             _service = new UserServiceFake();
             _logger = new Mock<ILogger<UsersController>>().Object;
-
             _controller = new UsersController(_service, _logger);
         }
 

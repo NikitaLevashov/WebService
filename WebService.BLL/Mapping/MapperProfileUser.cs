@@ -7,33 +7,15 @@ namespace WebService.BLL.Mapping
 {
     public static class MapperProfileUser
     {
-        public static UserDAL MapToDALUser(this UserBLL userBL)
-        {
-            var userDAL = MapperForDAL().Map<UserBLL, UserDAL>(userBL);
+        public static UserDAL MapToDALUser(this UserBLL userBL) => 
+            MapperForDAL().Map<UserBLL, UserDAL>(userBL);
+        public static UserBLL MapToBLLUser(this UserDAL userDAL) 
+            => MapperForBLL().Map<UserDAL, UserBLL>(userDAL);
+        public static IEnumerable<UserBLL> MapToEnumerableBLLUsers(this IEnumerable<UserDAL> usersDAL) 
+            => MapperForBLL().Map<IEnumerable<UserDAL>, IEnumerable<UserBLL>>(usersDAL);
 
-            return userDAL;
-        }
-
-        public static UserBLL MapToBLLUser(this UserDAL userDAL)
-        {
-            var userBLL = MapperForBLL().Map<UserDAL, UserBLL>(userDAL);
-
-            return userBLL;
-        }
-
-        public static IEnumerable<UserBLL> MapToEnumerableBLLUsers(this IEnumerable<UserDAL> usersDAL)
-        {
-            var usersBLL = MapperForBLL().Map<IEnumerable<UserDAL>, IEnumerable<UserBLL>>(usersDAL);
-
-            return usersBLL;
-        }
-
-        public static IEnumerable<UserDAL> MapToEnumerableDALUsers(this IEnumerable<UserBLL> usersBLL)
-        {
-            var usersDAL = MapperForDAL().Map<IEnumerable<UserBLL>, IEnumerable<UserDAL>>(usersBLL);
-
-            return usersDAL;
-        }
+        public static IEnumerable<UserDAL> MapToEnumerableDALUsers(this IEnumerable<UserBLL> usersBLL) 
+            => MapperForDAL().Map<IEnumerable<UserBLL>, IEnumerable<UserDAL>>(usersBLL);
         
         private static Mapper MapperForDAL()
         {
