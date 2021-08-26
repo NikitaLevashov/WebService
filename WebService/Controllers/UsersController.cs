@@ -19,13 +19,12 @@ namespace WebService.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _service;
-
         private readonly ILogger<UsersController> _logger;
 
         public UsersController(IUserService service, ILogger<UsersController> logger)
         {
-            _logger = logger;
-            _service = service;
+            _logger = logger ?? throw new ArgumentNullException();
+            _service = service ?? throw new ArgumentNullException();
         }        
         
         /// <summary>
@@ -38,7 +37,7 @@ namespace WebService.Controllers
             _logger.LogTrace("Start method Get");
             var products =  _service.GetAll().MapToEnumerableUsers();
 
-            _logger.LogInformation("Gettin all users from the users table");
+            _logger.LogInformation("Getting all users from the users table");
             _logger.LogInformation($"Status {Ok().StatusCode}");
             _logger.LogTrace("Finish method Get");
 
