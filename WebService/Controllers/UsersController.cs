@@ -11,6 +11,9 @@ using WebService.Models;
 
 namespace WebService.Controllers
 {
+    /// <summary>
+    /// <c>Api UsersController</c>
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -18,14 +21,18 @@ namespace WebService.Controllers
         private readonly IUserService _service;
 
         private readonly ILogger<UsersController> _logger;
+
         public UsersController(IUserService service, ILogger<UsersController> logger)
         {
             _logger = logger;
             _service = service;
         }        
         
+        /// <summary>
+        /// Gets all users
+        /// </summary>
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
             _logger.LogInformation("Getting users ");
             _logger.LogTrace("Start method Get");
@@ -38,13 +45,17 @@ namespace WebService.Controllers
             return Ok(products);
         }
 
+        /// <summary>
+        /// Get user by id.
+        /// </summary>
+        /// <param name="id">user id.</param>
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<User> Get(int id)
         {
             _logger.LogInformation("Getting user {Id}", id);
             _logger.LogTrace("Start method Get for id");
 
-            User user = _service.GetById(id).MapToUser();
+            var user = _service.GetById(id).MapToUser();
 
             if (user == null)
             {
@@ -60,8 +71,12 @@ namespace WebService.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Create new user.
+        /// </summary>
+        /// <param name="user">new user.</param>
         [HttpPost]
-        public IActionResult Post(User user)
+        public ActionResult Post(User user)
         {
             _logger.LogTrace("Start method Post");
 
@@ -83,8 +98,12 @@ namespace WebService.Controllers
             return BadRequest(ModelState);
         }
 
+        /// <summary>
+        /// Delete user.
+        /// </summary>
+        /// <param name="id">user id.</param>
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             _logger.LogTrace("Start method Delete");
 
@@ -109,8 +128,14 @@ namespace WebService.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Update user data.
+        /// </summary>
+        /// <param name="id">user id</param>
+        /// <param name="user">new user data.</param>
+        /// <returns></returns>
         [HttpPut]
-        public IActionResult Put(int id, User user)
+        public ActionResult Put(int id, User user)
         {
             _logger.LogTrace("Start method Put");
 

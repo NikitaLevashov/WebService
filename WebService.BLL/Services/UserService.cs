@@ -30,7 +30,7 @@ namespace WebService.BLL.Services
 
         public UserBLL GetById(int id)
         {
-            return _repository.Get(id).MapToBLLUser();
+            return _repository.GetById(id).MapToBLLUser();
         }
 
         public IEnumerable<UserBLL> GetAll()

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{7138254A-8649-4D3F-975C-68028904482A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService", "WebService\WebService.csproj", "{7138254A-8649-4D3F-975C-68028904482A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService.DAL", "WebService.DAL\WebService.DAL.csproj", "{D1B14868-D53B-4B04-8F44-26FFB6B6343C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService.DAL", "WebService.DAL\WebService.DAL.csproj", "{D1B14868-D53B-4B04-8F44-26FFB6B6343C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService.BLL", "WebService.BLL\WebService.BLL.csproj", "{9B9026FF-54F5-4A14-A79B-239D7E30371C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService.BLL", "WebService.BLL\WebService.BLL.csproj", "{9B9026FF-54F5-4A14-A79B-239D7E30371C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService.Tests", "WebService.Tests\WebService.Tests.csproj", "{F715E7BE-D54E-4D5D-BC01-87B3C31AB192}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9B9026FF-54F5-4A14-A79B-239D7E30371C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B9026FF-54F5-4A14-A79B-239D7E30371C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B9026FF-54F5-4A14-A79B-239D7E30371C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F715E7BE-D54E-4D5D-BC01-87B3C31AB192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F715E7BE-D54E-4D5D-BC01-87B3C31AB192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F715E7BE-D54E-4D5D-BC01-87B3C31AB192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F715E7BE-D54E-4D5D-BC01-87B3C31AB192}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
